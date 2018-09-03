@@ -43,21 +43,9 @@ router.post('/signin', function (req, res) {
           });
         }
         if (result) {
-          const JWTToken = jwt.sign({
-            email: user.email,
-            _id: user._id
-          },
-            'secret',
-            {
-              expiresIn: '2h'
-            });
+         
+
           return res.redirect("/profile");
-
-          res.send({
-            success: 'Welcome to the JWT Auth',
-            token: JWTToken
-
-          });
 
         }
         return res.status(401).json({
@@ -73,6 +61,7 @@ router.post('/signin', function (req, res) {
 });
 
 router.get("/", function (req, res, next) {
+
   res.render("index");
 });
 
@@ -81,8 +70,21 @@ router.get("/signup", function (req, res, next) {
 });
 
 router.get("/profile", function (req, res, next) {
+  const JWTToken = jwt.sign({
+    email: User.email,
+    _id: User._id
+  },
+    'secret',
+    {
+      expiresIn: '2h'
+    });
+
+  res.send({
+    success: 'Welcome to the JWT Auth',
+    token: JWTToken
+
+  });
   res.render("profile");
 });
 
 module.exports = router;
-

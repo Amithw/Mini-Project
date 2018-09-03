@@ -4,10 +4,54 @@
 
 <h1>Log in</h1>
 
-<form action="/signin" method="POST">
 
-    <input name="email" type="email" class="form-control" placeholder="email" required autofocus>
-    <input name="password" type="password" class="form-control" placeholder="password" required>
-    <input type="submit" value="Log in" class="btn btn-primary btn-block">
 
-</form>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>OAuth Tutorials</title>
+</head>
+<body>
+    
+    <nav>
+        <ul>
+                <% if(user){ %>
+                <%= user.username %>
+                <li><a href="/auth/logout">Logout</a></li>
+                <% } else{%>
+               
+                <% } %>
+                <li><a href="/">Homepage</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Net Ninja OAthu Tut's</h1>
+        <h2>Home page</h2>
+    </header>
+    <form action="/signin" method="POST">
+
+        <input name="email" type="email" class="form-control" placeholder="email" required autofocus>
+        <input name="password" type="password" class="form-control" placeholder="password" required>
+        <input type="submit" value="Log in" class="btn btn-primary btn-block">
+    
+    </form>
+    <main>
+        <p>Probably the best OAuth tutorials on the planet</p>
+    </main>
+
+    <nav>
+        <ul>
+            
+            
+            <li><a href="/">Homepage</a></li>
+        </ul>
+    </nav>
+    <header>
+        <h1>Login using...</h1>
+    </header>
+    <main>
+        <a class="google-btn" href="/auth/google">Google+</a>
+    </main>
+</body>
